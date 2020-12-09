@@ -46,6 +46,16 @@ class SinglyLinkedList:
                 tempNode.next = newNode
                 newNode.next = nextNode
 
+    # traversing SLL
+    def traverseSLL(self):
+        if self.head is None:
+            print("List does not exist")
+        else:
+            tempNode = self.head
+            while tempNode is not None:
+                print(tempNode.value)
+                tempNode = tempNode.next
+
 # creating a linked list
 signlyList = SinglyLinkedList()
 # insert at first 
@@ -60,3 +70,5 @@ signlyList.insertSLL(6,3)
 signlyList.insertSLL(0,0)
 
 print([node.value for node in signlyList])
+
+print(signlyList.traverseSLL())
