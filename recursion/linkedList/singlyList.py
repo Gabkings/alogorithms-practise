@@ -56,6 +56,18 @@ class SinglyLinkedList:
                 print(tempNode.value)
                 tempNode = tempNode.next
 
+    # searching an item in the list
+    def searchSLL(self, nodeValue):
+        if self.head is None:
+            print("List does not exist")
+        else:
+            tempNode = self.head
+            while tempNode is not None:
+                if tempNode.value == nodeValue:
+                    return tempNode.value
+                tempNode = tempNode.next
+            return "node does not exist"
+
 # creating a linked list
 signlyList = SinglyLinkedList()
 # insert at first 
@@ -72,3 +84,5 @@ signlyList.insertSLL(0,0)
 print([node.value for node in signlyList])
 
 print(signlyList.traverseSLL())
+# searching for a value
+print(signlyList.searchSLL(1))
