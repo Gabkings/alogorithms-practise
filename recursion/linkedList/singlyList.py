@@ -68,6 +68,50 @@ class SinglyLinkedList:
                 tempNode = tempNode.next
             return "node does not exist"
 
+    # deleting the node
+    def deletingNodeSSL(self, location):
+        if self.head is None:
+            print("List does not exist")
+        else:
+            if location == 0:
+                # check if only 1 node exist
+                if self.head == self.tail:
+                    self.head = None
+                    self.tail = None
+                else:
+                    self.head = self.head.next
+            elif location == 1:
+                if self.head == self.tail:
+                    self.head = None
+                    self.tail = None
+                else:
+                    tempNode = self.head
+
+                    while tempNode is not None:
+                        if tempNode.next == self.tail:
+                            break
+                        tempNode = tempNode.next
+                    tempNode.next = None
+                    self.tail = tempNode
+
+            else:
+                tempNode = self.head
+                index = 0
+                while index < location -1:
+                    tempNode = tempNode.next
+                    index  += 1
+                nextNode = tempNode.next
+                tempNode.next = nextNode.next
+
+    # deleting the entire list
+    def deleteEntireList(self):
+        if self.head is None:
+            print("List does not exist")
+        else:
+            self.head = None
+            self.head = None
+
+
 # creating a linked list
 signlyList = SinglyLinkedList()
 # insert at first 
@@ -80,9 +124,15 @@ signlyList.insertSLL(5,0)
 # insert at the middle
 signlyList.insertSLL(6,3)
 signlyList.insertSLL(0,0)
+signlyList.insertSLL(9,1)
 
 print([node.value for node in signlyList])
 
-print(signlyList.traverseSLL())
+
 # searching for a value
 print(signlyList.searchSLL(1))
+
+print(signlyList.deletingNodeSSL(1))
+
+print("----")
+print(signlyList.traverseSLL())
