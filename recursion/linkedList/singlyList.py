@@ -103,6 +103,7 @@ class SinglyLinkedList:
                 nextNode = tempNode.next
                 tempNode.next = nextNode.next
 
+
     # deleting the entire list
     def deleteEntireList(self):
         if self.head is None:

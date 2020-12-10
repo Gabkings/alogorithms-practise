@@ -111,6 +111,12 @@ class CircularSLL:
                 nextNode = tempNode.next
                 tempNode.next = nextNode.next
 
+    # deleting the node
+    def deleteEntireList(self):
+        self.head = None
+        self.tail.next = None
+        self.tail = None
+
             
 
 
@@ -134,6 +140,6 @@ circularSSL.searchNode(9)
 # circularSSL.deleteNode(0)
 
 print([node.value for node in circularSSL])
-circularSSL.deleteNode(1)
+circularSSL.deleteEntireList()
 
 print([node.value for node in circularSSL])
