@@ -127,10 +127,18 @@ class CircularDLL:
                 tempNode.next.prev = tempNode
 
 
-                
-
-                    
-
+    def deleteCDLL(self):
+        if self.head is None:
+            print("List does not exist")
+        else:
+            tempNode = self.head
+            self.tail.next = None
+            while tempNode:
+                tempNode.prev = None
+                tempNode = tempNode.next
+            self.head = None
+            self.tail = None
+            print("List has been deleted")
 
 
 circularDLL = CircularDLL()
@@ -151,4 +159,7 @@ print(circularDLL.searchValue(5))
 
 
 print(circularDLL.deletingNodeAtSpecificLocation(2))
+print([node.value for node in circularDLL])
+
+print(circularDLL.deleteCDLL())
 print([node.value for node in circularDLL])
