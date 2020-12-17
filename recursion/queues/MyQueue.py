@@ -5,6 +5,10 @@ class MyQueue:
         self.reversed = []
         self.first = None
 
+    def __str__(self):
+        values = [str(x) for x in self.stack]
+        return " ".join(values)
+
     def push(self, element):
         if not self.stack:
             self.first = element
@@ -27,6 +31,12 @@ class MyQueue:
 sampleQ = MyQueue()
 
 sampleQ.push(2)
+sampleQ.push(3)
+sampleQ.push(4)
+sampleQ.push(5)
 
 
 print(sampleQ.top())
+print(sampleQ.pop())
+print(sampleQ.top())
+print(sampleQ)
