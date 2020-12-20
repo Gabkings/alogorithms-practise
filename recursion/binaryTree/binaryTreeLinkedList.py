@@ -171,5 +171,84 @@ def insertNode(rootNode, newNode):
                 root.rightChild = newNode
                 return "Inserted on right child successful"
 
+newNode = TreeNode("porridge")
 print("Inserting a node")
-print(insertNode(tree, "porridge"))
+print(insertNode(tree, newNode))
+
+def getDeepestNode(rootNode):
+    if not rootNode:
+        return 
+    else:
+        customQueue = Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            if root.leftChild is not None:
+                customQueue.enqueue(root.leftChild)
+            if root.rightChild is not None:
+                customQueue.enqueue(root.rightChild)
+
+        return root.data
+
+
+print("Finding the deepest node")
+print(getDeepestNode(tree))
+
+def deletingDepestNode(rootNode, dNode):
+    if not rootNode:
+        return
+    else:
+        customQueue = Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            if root.data is dNode:
+                root = None
+                return "Deleted from root successfully"
+            if root.rightChild:
+                if root.rightChild.data is dNode:
+                    root.rightChild = None
+                    return "Deleted from right successfully"
+                else:
+                    customQueue.enqueue(root.rightChild)
+
+            if root.leftChild:
+                if root.leftChild.data is dNode:
+                    root.leftChild = None
+                    return "Deleted from left successfully"
+                else:
+                    customQueue.enqueue(root.leftChild)
+
+def deleteNodeBT(rootNode, node):
+    if not rootNode:
+        return
+    else:
+        customQueue = Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            if root.data == node:
+                dNode = getDeepestNode(rootNode)
+                root.data = dNode
+                deletingDepestNode(rootNode, dNode)
+                return "The node has been successfully deleted"
+            if (root.leftChild is not None):
+                customQueue.enqueue(root.leftChild)
+            if (root.rightChild is not None):
+                customQueue.enqueue(root.rightChild)
+        return "Failed to delete the node"
+
+def deleteEntireBinaryTree(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return "Tree has been deleted"
+
+print("Delting the deepest node")
+print(deleteNodeBT(tree, "Tea"))
+levelOrderTraversal(tree)
+# dNode = getDeepestNode(tree)
+# print(deletingDepestNode(tree, dNode))
+print(deleteEntireBinaryTree(tree))
+
+# levelOrderTraversal(tree)
