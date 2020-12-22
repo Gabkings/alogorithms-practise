@@ -238,3 +238,19 @@ rotate1 = rotateMatrix(matrixArr)
 
 print("Matrix rotation 180 Deg")
 print(rotateMatrix(rotate1))
+
+lst = ["SOLO", "hello", "Tea", "wHat"]
+
+def count_uppercase(lst):
+  count = 0
+  
+  # loop to access items in the list
+  for i in range(len(lst)):
+    word = lst[i]
+    for j in range(len(word)):
+        # print(word[j])
+        if word[j].isupper():
+            count += 1
+
+  
+  print(count)
