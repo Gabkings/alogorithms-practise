@@ -128,6 +128,56 @@ def levelOrderTraversal(rootNode):
             if root.rightChild is not None:
                 customQueue.enqueue(root.rightChild)
 
+def searchNode(rootNode, nodeValue):
+    if rootNode.data == nodeValue:
+        return "Value is found on the rootNode"
+    elif nodeValue < rootNode.data:
+        if rootNode.leftChild.data == nodeValue:
+            return "The value is found on the left"
+        else:
+            searchNode(rootNode.leftChild, nodeValue)
+    else:
+        if rootNode.rightChild.data == nodeValue:
+            return "Node is found on the right"
+        else:
+            searchNode(rootNode.rightChild, nodeValue)
+    return "node does not exist"
+
+def minimumNode(rootNode):
+    current = rootNode
+    while(current.leftChild is not None):
+        current = current.leftChild
+    return current
+
+def deleteNode(rootNode, nodeValue):
+    if rootNode is None:
+        return
+    if nodeValue < rootNode.data:
+        rootNode = deleteNode(rootNode.leftChild, nodeValue)
+    elif nodeValue > rootNode.data:
+        rootNode = deleteNode(rootNode.rightChild, nodeValue)
+    else:
+        # deleting a node with one child
+        if rootNode.leftChild is None:
+            temp = rootNode.rightChild
+            rootNode = None
+            return temp
+        if rootNode.rightChild is None:
+            temp = rootNode.leftChild
+            rootNode = None
+            return temp
+        # deleting the node  with two children
+        temp = minimumNode(rootNode.rightChild)
+        rootNode.data = temp.data 
+        rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data) 
+    return rootNode
+
+def deleteEntire(rootNode): 
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return "BT deleted"
+
 print(insertNode(bst, 50))
 print(insertNode(bst, 20))
 print(insertNode(bst, 30))
@@ -143,5 +193,12 @@ print("In order traversal")
 inOrderTraversal(bst)
 print("Level order traversal")
 levelOrderTraversal(bst)
+print("searching for a node")
+print(searchNode(bst, 80))
+print("Deleting the node")
+deleteNode(bst, 20)
+print("Level order traversal after delete")
+levelOrderTraversal(bst)
+print(deleteEntire(bst))
 
 
