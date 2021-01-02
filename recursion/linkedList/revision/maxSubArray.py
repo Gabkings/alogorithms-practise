@@ -11,7 +11,7 @@ class Solution:
             global_v = max(local_v, global_v)
         return global_v
 
-    def Kadane(arr,n): 
+    def Kadane(self,arr,n): 
         current_maximum = arr[0]   
         maximum_so_far =arr[0]     
         for i in range(1,n): 
@@ -20,4 +20,9 @@ class Solution:
         return maximum_so_far 
   
 arr = [-3, 4, 1, 2, -1, -4, 3] 
-print"Maximum sum sum is" , Kadane(arr,len(arr))
+
+size = len(arr)
+
+sample = Solution()
+x = sample.Kadane(arr,size)
+print(x)
