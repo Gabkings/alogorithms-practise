@@ -35,7 +35,10 @@ print("sum below")
 print(sumOfDigits(454)) 
 
 
-def powerOfNumbers(base, expo):
+d
+
+
+ef powerOfNumbers(base, expo):
     assert expo >= 0 and int(expo) == expo , "power must be greater than zero"
     if expo == 0:
         return 1

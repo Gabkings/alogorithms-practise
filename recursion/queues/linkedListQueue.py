@@ -22,7 +22,7 @@ class Queue:
         self.linkedList = LinkedList()
 
     def __str__(self):
-        values = [str(x) for x in self.linkedList]
+        values = [str(x.value) for x in self.linkedList]
         return " ".join(values)
 
     def isEmpty(self):
@@ -39,6 +39,7 @@ class Queue:
         else:
             self.linkedList.tail.next = node
             self.linkedList.tail = node
+        return self.linkedList.head
 
     def dequeue(self):
         if self.isEmpty():
