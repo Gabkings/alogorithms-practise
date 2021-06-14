@@ -1,6 +1,6 @@
 def fourNumberSum(array, targetSum):
     # Write your code here.
-    allPairSums = {}
+	allPairSums = {}
 	quadruplets = []
 	for i in range(1, len(array) - 1):
 		for j in range(i+1, len(array)):
