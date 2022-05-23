@@ -73,4 +73,4 @@ def twoSum(nums, target: int):
                 return [i, j]
 
 
-print(twoSum([2,3,7,15],9))
+# print(twoSum([2,3,7,15],9))
