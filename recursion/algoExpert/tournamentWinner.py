@@ -27,3 +27,17 @@ competitions = [["HTML","C#"], ["C#","Python"],["Python", "HTML"]]
 results = [0,0,1]
 
 print(solution(competitions, results))
+
+
+def tournamentWinner(competitions, results):
+    # Write your code here.
+    teamPoints = {}
+    currentWinner = '',0
+    for competition, result in zip(competitions, results):
+        winner = competition[not result]
+        if winner not in teamPoints: teamPoints[winner] = 0
+        teamPoints[winner] += 3
+
+        if teamPoints[winner] > currentWinner[1]:
+            currentWinner = winner, teamPoints[winner]
+    return currentWinner[0]

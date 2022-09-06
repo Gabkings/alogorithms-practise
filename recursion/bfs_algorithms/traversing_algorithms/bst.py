@@ -91,7 +91,6 @@ class BST:
         return leftIsValid and self.validateBstHelper(tree.right, tree.value, maxVal)
 
     def inOrderTraversal(self, root, arr):
-        
         if root is not None:
             self.inOrderTraversal(root.left, arr)
             arr.append(root.value)
@@ -111,8 +110,25 @@ class BST:
             self.postOderTraversal(root.right, arr)
             arr.append(root.value)
         return arr
-        
 
+def calculateBranchSums(root):
+    sums = []
+
+    runningSum = 0
+    branchSumsHelper(root, runningSum, sums)
+
+    return sums
+
+def branchSumsHelper(node, runningSum, sums):
+    if node is None:
+        return
+    newRuningSum = runningSum + node.value 
+
+    if node.left is None and node.right is None:
+        sums.append(newRuningSum)
+    
+    branchSumsHelper(node.left, runningSum, sums)
+    branchSumsHelper(node.right, runningSum, sums)
 
 
 bst = BST(30)
@@ -130,3 +146,5 @@ print(bst.preOrderTraversal(bst, arr = []))
 print("Post order traversal \n")
 print(bst.postOderTraversal(bst, arr = []))
 print(vbst)
+print("Branch sums")
+print(calculateBranchSums(bst))
