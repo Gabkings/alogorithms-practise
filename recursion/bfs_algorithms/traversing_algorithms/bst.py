@@ -111,6 +111,25 @@ class BST:
             arr.append(root.value)
         return arr
 
+    def flatenBST(self, root):
+        inOrderNodes = self.getNodesInorder(root, [])
+        for i in range(0, len(inOrderNodes) - 1):
+            leftNode = inOrderNodes[i]
+            rightNode = inOrderNodes[i + 1]
+            leftNode.right = rightNode
+            rightNode.left = leftNode
+
+        return inOrderNodes[0].value
+
+        
+
+    def getNodesInorder(self, root, arr):
+        if root is not None:
+            self.getNodesInorder(root.left, arr)
+            arr.append(root)
+            self.getNodesInorder(root.right, arr)
+        return arr 
+
 def calculateBranchSums(root):
     sums = []
 
@@ -148,3 +167,5 @@ print(bst.postOderTraversal(bst, arr = []))
 print(vbst)
 print("Branch sums")
 print(calculateBranchSums(bst))
+print("Flaten nodes ")
+print(bst.flatenBST(bst))
