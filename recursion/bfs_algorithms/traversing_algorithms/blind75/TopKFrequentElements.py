@@ -14,7 +14,9 @@ class Solution:
 
         return result
 
-nums, k = [1,1,1,2,2,3], 2
+# nums, k = [1,1,1,2,2,3], 2
+nums, k = [4,1,-1,2,-1,2,3], 2
+
 
 sln = Solution()
 
