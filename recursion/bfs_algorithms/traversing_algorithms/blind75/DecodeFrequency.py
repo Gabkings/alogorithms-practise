@@ -1,27 +1,31 @@
-
-def frequency(s):
-    res = [0] * 26 
-
-    n  = len(s),
-    i =  n-1
+def frequency(str1):
+    res=[0]*26 # Creating an Array for 26 as there are 26 alphabets
+    i = len(str1)-1 
+    count=1
     while i >= 0:
-        cnt, num = 1, 0
-        if s[i] == ')':
-            i, ts = 1, 0
-            while s[i] != '(':
-                cnt = int(s[i]) * (10**ts)
-                ts += 1
-                i-= 1
-            i -= 1
-        if s[i] == '#':
-            i -= 2 
-            num = int(s[i]) * 10 + int(s[i + 1])
-        if num == 0:
-            num = int(s[i])
-        res[num - 1] += cnt 
+        j=i
+        if str1[i] == ')':
+            while str1[j] != '(':
+                j=j-1
+            count=int(str1[j+1:i])
+            i=j
+        elif str1[i]=='#':
+            j=i-2
+            index=int(str1[j:i])
+            res[index-1]=1*count
+            count=1
+            i=j
+        elif str1[i] != '(':
+            index=int(str1[i])
+            res[index-1]=1*count
+            count=1
+            i=j
+        i= i-1
+    
+    return res
 
-        i -= 1
+# assert frequency('1226#24#') == [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1]
+print(frequency('1226#24#'))
+print(frequency('1(10)226#24#'))
 
-    return "".join(map(str, res))
-
-print(frequency("2110#(2)"))
+# print(frequency("2110#(2)"))
