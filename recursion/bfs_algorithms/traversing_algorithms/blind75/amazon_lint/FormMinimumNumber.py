@@ -100,6 +100,54 @@ class Solution:
         return dp[0][len(stones) - 1]
 
 
+class Solution1:
+    ''' 
+        Given a string S that only contains "I" (increase) or "D" (decrease), let N = S.length.
+
+        Return any permutation A of [0, 1, ..., N] such that for all i = 0, ..., N-1:
+    '''
+    def diStringMatch(self, s):
+        lo = 0
+        hi = n = len(s)
+        perm = [0] * (n + 1)
+        for i, ch in enumerate(s):
+            if ch == 'I':
+                perm[i] = lo
+                lo += 1
+            else:
+                perm[i] = hi
+                hi -= 1
+        perm[n] = lo 
+        return perm
+
+    def substringk(self, s, k):
+        '''
+            Given a string s and an int k, return all unique substrings of s of size k with k distinct characters.
+        '''
+        if not s or k == 0:
+            return []
+        letter, res = {}, set()
+        start = 0
+        for i in range(len(s)):
+            if s[i] in letter and letter[s[i]] >= start:
+                start = letter[s[i]]+1
+            letter[s[i]] = i
+            if i-start+1 == k:
+                res.add(s[start:i+1])
+                start += 1
+        return list(res)
+
+sln2 = Solution1()
+
+s1 = "IDID"
+
+s2 = "abcabc"
+k = 3
+
+print(sln2.diStringMatch(s1))
+print(sln2.substringk(s2, k))
+
+
 
 
 sln = Solution()

@@ -32,3 +32,8 @@ def optimalUtilization(a,b, target):
             res.append([idx1, idx2])
 
     return res 
+
+a = [[1, 2], [2, 4], [3, 6]]
+b = [[1, 2]]
+target = 7
+print(optimalUtilization(a, b, target))
