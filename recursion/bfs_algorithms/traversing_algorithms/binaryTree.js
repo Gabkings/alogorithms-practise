@@ -189,7 +189,7 @@ class BST {
     kthSmallest = (k) => {
         let val;
 
-        let inorder = (this.root) {
+        let inorder = (this.root) => {
             if (root == null) {
                 return;
             }

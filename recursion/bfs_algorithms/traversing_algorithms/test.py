@@ -1,5 +1,7 @@
 wordStr = "WeAreTogether"
 
+
+
 # function strOut(wordStr) {
 #     //split into arr via Capital letters
 #     let wordArr = wordStr.split(/(?=[A-Z])/)
@@ -14,6 +16,13 @@ import re
 def strOut(wordStr):
     # wordArr = wordStr.split('/(?=[A-Z])/')
     wordArr = re.findall('[A-Z][^A-Z]*', wordStr)
+    # str1 = "gabriel.gitonga@gmail.com"
+    # wordArr = str1.split("@")
+    # wordArr1 = wordArr[0].split(".")
+
+    # wordArr2 = " ".join(wordArr1).title()
+
+    print(wordArr)
 
     return " ".join(wordArr).capitalize()
 
@@ -79,4 +88,45 @@ def reverseString(str1):
         s = i + s
     return s
 
-print(reverseString("iLoveYou"))
+# print(reverseString("iLoveYou"))
+
+
+def findTotalPower(power):
+    total = 0 
+    for l in range(len(power)):
+        for r in range(l, len(power)):
+            pwr = min(power[l:r+1]) * sum(power[l:r+1])
+            total += pwr 
+
+    return total % (10**9 + 7)
+
+
+
+power = [2,3,2,1]
+
+print(findTotalPower(power))
+
+
+def swaps(arr, n):
+    res = 0 
+    max_i, min_i = max(arr), min(arr)
+
+    if min_i == max_i:
+        return 0 
+    
+    index_max, index_min = -1,-1
+    for i in range(n):
+        if arr[i] == max_i and index_max == -1:
+            index_max = i 
+        
+        if arr[i] == min_i:
+            index_min = i 
+
+    res += index_min 
+
+    res += (n-1-index_max)
+
+    if index_min > index_max:
+        res -= 1 
+
+    return res 
